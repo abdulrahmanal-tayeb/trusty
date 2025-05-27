@@ -1,0 +1,89 @@
+# Node modules (should never be committed)
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Environment variables and secrets
+.env
+.env.*     # includes .env.local, .env.production, etc.
+*.local    # catch-all for any config.local-like files
+
+# Sensitive credential files
+*.pem
+*.key
+*.crt
+*.cert
+*.pfx
+*.p12
+*.asc
+*.gpg
+*.jks
+*.keystore
+*.db       # SQLite or other local dbs
+*.sqlite*
+*.bak
+*.swp
+*.swo
+*.tmp
+*.lock
+
+# API keys and secrets
+firebase-service-account.json
+google-services.json
+GoogleService-Info.plist
+aws-credentials.json
+*.awscredentials
+*.awsconfig
+secrets/
+config/secrets.yml
+config/keys/
+
+# Build and dist output
+dist/
+build/
+out/
+
+# IDE/editor folders
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# NPM-specific
+package-lock.json
+npm-shrinkwrap.json
+
+# Optional: lockfile ignore (use only if you manage dependencies manually)
+# yarn.lock
+
+# Coverage/test output
+coverage/
+.nyc_output/
+test-results/
+
+# Docker-related
+docker-compose.override.yml
+.docker.env
+
+# Misc
+*.tgz
+*.gz
+*.zip
+*.7z
+*.rar

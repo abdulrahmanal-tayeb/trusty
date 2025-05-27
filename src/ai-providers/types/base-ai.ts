@@ -1,0 +1,26 @@
+import OpenAI from "openai";
+
+export type AIRequestOptions = {
+    prompt: string;
+    model: AIModels;
+    temperature?: number;
+    maxTokens?: number;
+    system: string;
+    messages?: OpenAI.Chat.Completions.ChatCompletionMessageParam[];
+    [key: string]: any; // for provider-specific options
+};
+
+export type AIResponse = {
+    result: string;
+    changes: string[];
+    raw?: any;
+};
+
+export type AIModels = "gpt-4o" | "deepseek-chat";
+
+export type PhaseFunc = (text: string) => Promise<AIResponse>;
+
+export type PhaseOutput = {
+    result: string;
+    changes: string[];
+};
