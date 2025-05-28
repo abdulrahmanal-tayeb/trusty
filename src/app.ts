@@ -2,6 +2,7 @@ import express from 'express';
 import userRoutes from './routes/user.routes';
 import humanizerRoutes from "./routes/humanizer.routes";
 
+require('dotenv').config();
 
 const app = express();
 
