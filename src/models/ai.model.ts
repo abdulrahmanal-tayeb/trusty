@@ -1,4 +1,6 @@
 import OpenAI from "openai";
+import { APIPromise } from "openai/core";
+import { ChatCompletion } from "openai/resources/chat";
 
 export type AIRequestOptions = {
     prompt: string;
@@ -13,12 +15,12 @@ export type AIRequestOptions = {
 export type AIResponse = {
     result: string;
     changes: string[];
-    raw?: any;
+    raw?: ChatCompletion;
 };
 
 export type AIModels = "gpt-4o" | "deepseek-chat";
 
-export type PhaseFunc = (text: string) => Promise<AIResponse>;
+export type PhaseFunc = (text: string, system: string) => Promise<AIResponse>;
 
 export type PhaseOutput = {
     result: string;

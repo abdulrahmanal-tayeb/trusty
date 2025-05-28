@@ -1,54 +1,24 @@
 import { deepseek } from "../ai-providers/deepseek-provider";
 import { openai } from "../ai-providers/openai-provider";
-import { AIResponse, PhaseFunc, PhaseOutput } from "../ai-providers/types/base-ai";
+import { AIResponse, PhaseFunc, PhaseOutput } from "../models/ai.model";
+import { PHASES_TEMPLATES } from "../config/constants";
 
-export const discoveryPhase = async (text: string): Promise<AIResponse> => {
+export const firstPhase = async (text: string, system: string): Promise<AIResponse> => {
     return openai.send({
         model: "gpt-4o",
-        system: "",
-        prompt: "",
+        system,
+        prompt: text,
     });
 }
 
-export const breakingPhase = async (): Promise<AIResponse> => {
+export const secondPhase = async (text: string, system: string): Promise<AIResponse> => {
     return deepseek.send({
         model: "deepseek-chat",
-        system: "",
-        prompt: "",
+        system,
+        prompt: text,
     });
 }
 
-export const replacingPhase = async (): Promise<AIResponse> => {
-    return deepseek.send({
-        model: "deepseek-chat",
-        system: "",
-        prompt: "",
-    });
-}
-
-export const compundingPhase = async (): Promise<AIResponse> => {
-    return deepseek.send({
-        model: "deepseek-chat",
-        system: "",
-        prompt: "",
-    });
-}
-
-export const evaluationPhase = async (): Promise<AIResponse> => {
-    return deepseek.send({
-        model: "deepseek-chat",
-        system: "",
-        prompt: "",
-    });
-}
-
-const PHASES: PhaseFunc[] = [
-    discoveryPhase,
-    breakingPhase,
-    replacingPhase,
-    compundingPhase,
-    evaluationPhase,
-];
 
 export const processText = async (userText: string): Promise<PhaseOutput[]> => {
     if (!userText) return [];
@@ -56,13 +26,24 @@ export const processText = async (userText: string): Promise<PhaseOutput[]> => {
     const steps: PhaseOutput[] = [];
     let currentText = userText;
 
-    for (const phase of PHASES) {
+    for (const [index, phase] of PHASES.entries()) {
         try {
-            steps.push(await phase(currentText));
-        } catch(e) {
+            console.log(`Executing phase ${index + 1}...`)
+            const {result, changes, raw} = await phase(currentText, PHASES_TEMPLATES[index]);
+            currentText = result;
+            console.log("RESULT: ", raw);
+            steps.push({result, changes});
+        } catch (e) {
             continue;
         }
     }
 
+    console.log(`Result of all steps: ${steps}`);
     return steps;
 };
+
+
+const PHASES: PhaseFunc[] = [
+    firstPhase,
+    secondPhase,
+];

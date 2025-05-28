@@ -1,4 +1,6 @@
-import { AIRequestOptions, AIResponse } from "./types/base-ai";
+import { AIRequestOptions, AIResponse } from "../models/ai.model";
+
+export const BASE_SYSTEM_INSTRUCTION = 'Your only task is to identify and replace AI-generated patterns in texts, making them sound more natural and human-like.';
 
 type SendFn = (payload: any) => Promise<any>;
 type ParseFn = (raw: any) => AIResponse;
@@ -39,7 +41,6 @@ export class BaseAI {
   protected buildRequestPayload(options: AIRequestOptions): any {
     return {
       temperature: options.temperature ?? this.temperature,
-      maxTokens: options.maxTokens ?? this.maxTokens,
       ...options,
     };
   }
@@ -53,16 +54,16 @@ export class BaseAI {
 
   protected parseResponse(raw: any): AIResponse {
     if (this.parseFn) return this.parseFn(raw);
-
+  
     let json: any;
-
+  
     try {
       const rawContent = typeof raw === "string"
         ? raw
         : typeof raw?.choices?.[0]?.message?.content === "string"
           ? raw.choices[0].message.content
           : JSON.stringify(raw);
-
+  
       json = JSON.parse(rawContent);
     } catch (e) {
       return {
@@ -71,11 +72,12 @@ export class BaseAI {
         raw,
       };
     }
-
+  
     return {
-      result: typeof json.result === "string" ? json.result : "",
+      result: typeof json.text === "string" ? json.text : "",
       changes: Array.isArray(json.changes) ? json.changes.slice(0, 3) : [],
       raw,
     };
   }
+  
 }
