@@ -1,5 +1,5 @@
 export interface HumanizerOptions {
-    language: string;
-    tone: string;
-    resultType: string;
+    language?: string;
+    tone?: "professional" | "friendly" | "neutral" | "empathetic";
+    resultType?: "summarized" | "detailed" | "rewritten";
 }

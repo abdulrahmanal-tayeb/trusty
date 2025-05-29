@@ -15,6 +15,7 @@ export type AIRequestOptions = {
 export type AIResponse = {
     result: string;
     changes: string[];
+    humanized_score?: number;
     raw?: ChatCompletion;
 };
 
@@ -25,4 +26,5 @@ export type PhaseFunc = (text: string, system: string) => Promise<AIResponse>;
 export type PhaseOutput = {
     result: string;
     changes: string[];
+    humanized_score?: number;
 };

@@ -11,6 +11,7 @@ Avoid making the structure too uniform or too polished.
 Do NOT over-polish. Keep slight inconsistencies that make it feel human.
 Avoid robotic transitions, remove clichés if found, and keep it relatable.
 -Do not add any additional or unneccessary text. 
+
 Return:
 {
   "text": "<refined version>",
@@ -37,7 +38,7 @@ Return:
 {
   "text": "<refined version>",
   "changes": [...],
-  "score": <humanized_score>
+  "humanized_score": <accurate_humanized_score_out_of_100>
 }
 `,
 ];

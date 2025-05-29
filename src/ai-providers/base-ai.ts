@@ -70,6 +70,7 @@ export class BaseAI {
         result: "",
         changes: [],
         raw,
+        humanized_score: 50
       };
     }
   
@@ -77,6 +78,7 @@ export class BaseAI {
       result: typeof json.text === "string" ? json.text : "",
       changes: Array.isArray(json.changes) ? json.changes.slice(0, 3) : [],
       raw,
+      humanized_score: json.humanized_score ?? 0
     };
   }
   
