@@ -1,4 +1,3 @@
-import Logo from '@/components/assets/Logo';
 import styles from './Footer.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -20,7 +19,7 @@ const Footer: React.FC = () => {
                     <Link href="/privacy-policy" className={styles.footerLink}>
                         Privacy Policy
                     </Link>
-                    <Link href="https://github.com/your-org/your-repo" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>
+                    <Link href="https://github.com/abdulrahmanal-tayeb/trusty" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>
                         Clone Project
                     </Link>
                     <Link href="/download" className={styles.footerLink}>

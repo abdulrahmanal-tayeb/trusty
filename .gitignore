@@ -1,20 +1,132 @@
-# Root-level ignore
+# ────────────────────────────────
+# GLOBAL RULES (applied to all)
+# ────────────────────────────────
+*.log
+*.tmp
+*.swp
 .DS_Store
-node_modules/
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
 
-# Frontend (Next.js)
-frontend/.next/
+# ────────────────────────────────
+# FRONTEND (Next.js)
+# ────────────────────────────────
 frontend/node_modules/
-frontend/.env.local
+frontend/.pnp
+frontend/.pnp.*
+frontend/.yarn/*
+!frontend/.yarn/patches
+!frontend/.yarn/plugins
+!frontend/.yarn/releases
+!frontend/.yarn/versions
+
+frontend/coverage/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/.DS_Store
+frontend/*.pem
+
+# Debug logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.pnpm-debug.log*
+
+# Environment
 frontend/.env*
+frontend/.vercel
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
 
-# Backend (Node.js)
+# ────────────────────────────────
+# BACKEND (Node.js)
+# ────────────────────────────────
 backend/node_modules/
-backend/dist/
-backend/.env*
+backend/logs/
+backend/*.log
+backend/npm-debug.log*
+backend/yarn-debug.log*
+backend/yarn-error.log*
 
-# Mobile (Flutter)
-# Miscellaneous
+# Runtime data
+backend/pids/
+backend/*.pid
+backend/*.seed
+backend/*.pid.lock
+
+# Environment and sensitive
+backend/.env
+backend/.env.*
+backend/*.local
+backend/*.pem
+backend/*.key
+backend/*.crt
+backend/*.cert
+backend/*.pfx
+backend/*.p12
+backend/*.asc
+backend/*.gpg
+backend/*.jks
+backend/*.keystore
+backend/*.db
+backend/*.sqlite*
+backend/*.bak
+backend/*.swp
+backend/*.swo
+backend/*.tmp
+backend/*.lock
+
+# Secrets and credentials
+backend/firebase-service-account.json
+backend/google-services.json
+backend/GoogleService-Info.plist
+backend/aws-credentials.json
+backend/*.awscredentials
+backend/*.awsconfig
+backend/secrets/
+backend/config/secrets.yml
+backend/config/keys/
+
+# Build output
+backend/dist/
+backend/build/
+backend/out/
+
+# IDE/editor folders
+backend/.vscode/
+backend/.idea/
+
+# NPM specific
+backend/package-lock.json
+backend/npm-shrinkwrap.json
+
+# Optional: lockfile (ignore if managed manually)
+# backend/yarn.lock
+
+# Coverage/test
+backend/coverage/
+backend/.nyc_output/
+backend/test-results/
+
+# Docker
+backend/docker-compose.override.yml
+backend/.docker.env
+
+# Misc archives
+backend/*.tgz
+backend/*.gz
+backend/*.zip
+backend/*.7z
+backend/*.rar
+
+# ────────────────────────────────
+# MOBILE (Flutter)
+# ────────────────────────────────
+
+# Misc
 mobile/*.class
 mobile/*.log
 mobile/*.pyc
@@ -28,16 +140,16 @@ mobile/.svn/
 mobile/.swiftpm/
 mobile/migrate_working_dir/
 
-# IntelliJ related
+# IntelliJ
 mobile/*.iml
 mobile/*.ipr
 mobile/*.iws
 mobile/.idea/
 
-# VSCode – optional, uncomment to ignore
+# VS Code – optional
 # mobile/.vscode/
 
-# Flutter/Dart/Pub related
+# Flutter/Pub/Dart
 mobile/**/doc/api/
 mobile/**/ios/Flutter/.last_build_id
 mobile/.dart_tool/
@@ -47,13 +159,14 @@ mobile/.pub-cache/
 mobile/.pub/
 mobile/build/
 
-# Symbolication related
+# Symbolication
 mobile/app.*.symbols
 
-# Obfuscation related
+# Obfuscation
 mobile/app.*.map.json
 
-# Android Studio build artifacts
+# Android Studio artifacts
 mobile/android/app/debug/
 mobile/android/app/profile/
 mobile/android/app/release/
+mobile/.env*
