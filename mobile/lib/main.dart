@@ -4,8 +4,11 @@ import 'package:trusty/config/router/app_router.dart';
 import 'package:trusty/config/theme/dark_theme.dart';
 import 'package:trusty/config/theme/light_theme.dart';
 import 'package:trusty/providers/user_input_provider.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: ".env");
+
   runApp(
     MultiProvider(
       providers: [

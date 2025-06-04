@@ -45,7 +45,6 @@ export const processText = async (userText: string, options: HumanizerOptions): 
         }
     }
 
-    console.log(`Result of all steps: ${steps}`);
     return steps;
 };
 
@@ -57,7 +56,6 @@ const PHASES: PhaseFunc[] = [
 
 
 const buildSystemInstruction = (systemInstruction: string, options: HumanizerOptions) : string => {
-
 console.log("OPTIONS ARE: ", options);
 return options? `
 ${systemInstruction}

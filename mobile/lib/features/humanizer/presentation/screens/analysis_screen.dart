@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:trusty/features/humanizer/presentation/widgets/features/analysis_screen/score_insights_widget.dart';
@@ -30,22 +31,23 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
 
   Future<List<Map<String, dynamic>>> callHumanizeAPI() async {
     final provider = context.read<UserInputProvider>();
-    debugPrint("BROOOOOO ${provider.text}");
-    final url = Uri.parse('http://192.168.8.120:3000/api/humanize/');
+    final BASE_URL = dotenv.env['BASE_URL'];
+    final url = Uri.parse('$BASE_URL/api/humanize/');
 
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
-        'text': provider.text, // ✅ no widget.provider now
+        'text': provider.text,
         'options': {
-          // your HumanizerOptions here
+          'language': provider.language,
+          'tone': provider.tone,
+          'resultType': provider.resultType
         },
       }),
     );
 
     if (response.statusCode == 200) {
-      debugPrint("RESULT: :: : : : :: ${response.body}");
       final resultList = jsonDecode(response.body);
       return List<Map<String, dynamic>>.from(resultList);
     } else {
