@@ -1,0 +1,39 @@
+.footer {
+    padding: 2rem;
+    background-color: #111;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+}
+
+.inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.leftSection {
+    display: flex;
+    align-items: center;
+}
+
+.linksSection {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footerLink {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.footerLink:hover {
+    color: #fff;
+}

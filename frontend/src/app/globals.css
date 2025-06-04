@@ -1,0 +1,702 @@
+/* This file is not yet optimized, and may contain unused CSS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary-color: #000;
+  --secondary-color: #fff;
+  --accent-color: #333;
+  --hover-color: #555;
+  --border-color: #444;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --glow-color: rgba(255, 255, 255, 0.05);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(40, 40, 40, 0.3) 0%, rgba(0, 0, 0, 0) 50%);
+  z-index: -1;
+  animation: rotate 60s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.content {
+  max-width: 960px;         /* Adjust as needed */
+  margin: 0 auto;           /* This centers the block */
+  padding: 0 1rem;          /* Adds padding on smaller screens */
+  box-sizing: border-box;
+}
+
+
+
+
+.input-container {
+  position: relative;
+  margin-bottom: 2rem;
+  border-radius: 16px;
+  background-color: rgba(30, 30, 30, 0.4);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease 0.2s both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.input-container:focus-within {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2), 0 10px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.input-container::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.text-input {
+  width: 100%;
+  min-height: 320px;
+  padding: 1.75rem;
+  padding-bottom: 5rem;
+  background-color: transparent;
+  border: none;
+  color: var(--secondary-color);
+  font-size: 1.05rem;
+  resize: vertical;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  line-height: 1.6;
+}
+
+.text-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.text-input:focus::placeholder {
+  opacity: 0.5;
+  transform: translateX(5px);
+}
+
+.input-actions {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  padding: 1.25rem;
+  gap: 0.75rem;
+  z-index: 2;
+  background: linear-gradient(to top, rgba(30, 30, 30, 0.8) 0%, rgba(30, 30, 30, 0) 100%);
+  width: 100%;
+  justify-content: flex-end;
+  padding-top: 3rem;
+}
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.icon-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0%;
+  height: 0%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-out;
+}
+
+.icon-button:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.icon-button:hover::before {
+  width: 150%;
+  height: 150%;
+}
+
+.icon-button:active {
+  transform: scale(0.95) translateY(-2px);
+}
+
+.icon-button svg {
+  position: relative;
+  z-index: 1;
+}
+
+.options-container {
+  padding: 2.5rem;
+  border-radius: 16px;
+  background-color: rgba(30, 30, 30, 0.4);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 1s ease 0.4s both;
+}
+
+.options-container::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  animation: rotateSlow 30s linear infinite;
+}
+
+@keyframes rotateSlow {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.dropdown-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #aaa;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropdown-label::before {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+
+.dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-select {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-color);
+  color: var(--secondary-color);
+  font-size: 1rem;
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown-select:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.dropdown-select:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.dropdown::after {
+  content: '▼';
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 0.8rem;
+  color: #aaa;
+  transition: all 0.3s ease;
+}
+
+.dropdown:focus-within::after {
+  transform: translateY(-50%) rotate(180deg);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #fff, #ddd);
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.submit-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button:hover::before {
+  left: 100%;
+}
+
+.submit-button:active {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .input-container,
+  .options-container {
+    padding: 1.5rem;
+  }
+}
+
+/* Loading animation */
+.loading-dots {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+.loading-dots span {
+  width: 5px;
+  height: 5px;
+  margin: 0 2px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  display: inline-block;
+  animation: loadingDots 1.4s infinite ease-in-out both;
+}
+
+.loading-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes loadingDots {
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+}
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background-color: rgba(30, 30, 30, 0.9);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.toast-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+
+
+
+/*------------------------------------------------*/
+
+/* Base section—glass wrapper */
+.phases-section {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: #fff; /* all text white on black background */
+}
+
+/* Progress indicator row — glass card */
+.phases-progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 1rem;
+  gap: 1em 0em;
+}
+
+.phase-item {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex: 1 1 auto;
+  position: relative;
+}
+
+.phase-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.phase-circle.pending {
+  background-color: #ccc;
+  opacity: 0.7;
+}
+
+.phase-circle.active {
+  background-color: #fff;
+  animation: pulse 1.2s infinite;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+.phase-circle.completed {
+  background-color: #fff;
+  opacity: 0.8;
+}
+
+.phase-label {
+  margin-left: 0.5rem;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.phase-line {
+  flex: 1;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.3);
+  margin: 0 8px;
+}
+
+/* Spinner inside active phase */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #000;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Cancel button */
+.cancel-button {
+  display: block;
+  margin: 0.5rem auto 2rem;
+  padding: 0.6rem 1.4rem;
+  background-color: rgba(255, 0, 0, 0.8);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+  background-color: rgba(255, 0, 0, 1);
+}
+
+/* Result and chart wrapper — glass card */
+.result-section {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* Readonly result container */
+.result-box {
+  flex: 1 1 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.readonly-input {
+  width: 100%;
+  min-height: 180px;
+  padding: 1rem;
+  resize: none;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+.copy-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.icon-button {
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.icon-button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Chart + changes container */
+.analysis-box {
+  flex: 1 1 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+
+/* Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .result-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+
+@media (max-width: 510px) {
+  body {
+    padding: 1rem;
+  }
+  .content {
+    padding: 0;
+  }
+
+  .text-input {
+    padding: 0;
+  }
+
+  .phases-section {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+}
+
+
+/* WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;          /* white track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000;    /* black thumb */
+  border-radius: 4px;        /* rounded corners */
+  border: 2px solid #fff;    /* gives a little padding/outline */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #333;    /* slightly lighter on hover */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;             /* make it thin */
+  scrollbar-color: #000 #fff;        /* thumb color first, track color second */
+}
+
+
+/* Style the dropdown arrow container (optional if using appearance: none) */
+.dropdown-select::-ms-expand {
+  display: none;
+}
+
+/* Style the open options (popup) */
+.dropdown-select option {
+  background-color: black;
+  color: white;
+}

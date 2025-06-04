@@ -1,0 +1,59 @@
+# Root-level ignore
+.DS_Store
+node_modules/
+
+# Frontend (Next.js)
+frontend/.next/
+frontend/node_modules/
+frontend/.env.local
+frontend/.env*
+
+# Backend (Node.js)
+backend/node_modules/
+backend/dist/
+backend/.env*
+
+# Mobile (Flutter)
+# Miscellaneous
+mobile/*.class
+mobile/*.log
+mobile/*.pyc
+mobile/*.swp
+mobile/.DS_Store
+mobile/.atom/
+mobile/.build/
+mobile/.buildlog/
+mobile/.history
+mobile/.svn/
+mobile/.swiftpm/
+mobile/migrate_working_dir/
+
+# IntelliJ related
+mobile/*.iml
+mobile/*.ipr
+mobile/*.iws
+mobile/.idea/
+
+# VSCode – optional, uncomment to ignore
+# mobile/.vscode/
+
+# Flutter/Dart/Pub related
+mobile/**/doc/api/
+mobile/**/ios/Flutter/.last_build_id
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/.pub-cache/
+mobile/.pub/
+mobile/build/
+
+# Symbolication related
+mobile/app.*.symbols
+
+# Obfuscation related
+mobile/app.*.map.json
+
+# Android Studio build artifacts
+mobile/android/app/debug/
+mobile/android/app/profile/
+mobile/android/app/release/

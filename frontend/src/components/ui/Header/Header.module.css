@@ -1,0 +1,28 @@
+.header {
+    text-align: center;
+    padding: 2rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ddd;
+    font-weight: 400;
+    margin: 0 auto;
+}
+
+
+@media (max-width: 350px){
+    .subtitle {
+        font-size: 0.9em;
+    }
+}
