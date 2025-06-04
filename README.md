@@ -35,6 +35,11 @@ The backend is containerized for plug-and-play deployment.
     docker run -p 3000:3000 trusty-backend
     ```
 
+    or if you have node.js (ts-node) installed. just run 
+    ```bash
+    npx ts-node backend/src/index.ts
+    ```
+
 ---
 
 ### Web Frontend Setup

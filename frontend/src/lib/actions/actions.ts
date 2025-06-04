@@ -1,12 +1,12 @@
 "use server"
 
 import { HumanizerOptions } from "@/config/models/models"
-import { HumanizerResultsState } from "@/config/stores/stores";
+import { HumanizerResult } from "@/config/stores/stores";
 
 export const handleHumanize = async (
   text: string,
   options: HumanizerOptions
-): Promise<HumanizerResultsState> => {
+): Promise<HumanizerResult[]> => {
   const response = await fetch(`${process.env.BASE_URL}/api/humanize`, {
     method: "POST",
     headers: {
@@ -19,7 +19,7 @@ export const handleHumanize = async (
     throw new Error("Failed to fetch humanized result");
   }
 
-  const data: HumanizerResultsState = await response.json();
+  const data: HumanizerResult[] = await response.json();
   console.log(data);
   return data;
 };

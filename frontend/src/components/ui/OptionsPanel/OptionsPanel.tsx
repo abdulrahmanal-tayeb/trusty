@@ -6,6 +6,7 @@ import {
   useUserInputStore,
   UserInputField,
 } from '@/config/stores/stores';
+
 import { handleHumanize } from '@/lib/actions/actions';
 import { Dropdown } from '../../common/DropDown/DropDown';
 import { useCallback } from 'react';
@@ -82,7 +83,7 @@ const OptionsPanel: React.FC = () => {
       console.error('Error: ', e);
       updateLoading(false);
     }
-  }, [language, tone, resultType]);
+  }, [language, tone, resultType, updateResult, updateLoading, isLoading]);
 
 
   return (

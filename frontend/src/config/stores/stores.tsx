@@ -17,7 +17,7 @@ interface UserInputState {
 }
 
 
-export const useUserInputStore = create<UserInputState>((set: any) => ({
+export const useUserInputStore = create<UserInputState>((set) => ({
     // initialize with empty strings to avoid `undefined` in consumers
     text: '',
     tone: '',
@@ -49,9 +49,15 @@ export interface HumanizerResultsState {
     score: number | null;
     isLoading: boolean;
     updateLoading: (isLoading: boolean) => void;
-    updateResult: (results: HumanizerResultsState) => void;
+    updateResult: (results: HumanizerResult[]) => void;
     resetState: () => void;
 }
+
+export type HumanizerResult = {
+    result: string | null;
+    humanized_score: number | null;
+    changes?: string[];
+};
 
 export const useHumanizerResultsStore = create<HumanizerResultsState>((set) => ({
     result: null,
@@ -66,18 +72,21 @@ export const useHumanizerResultsStore = create<HumanizerResultsState>((set) => (
             isLoading: false
         }));
     },
-    updateResult: (results: any) => {
+    updateResult: (results: HumanizerResult[]) => {
         console.log("RESULTS: ", results);
+      
+        const last = results[results.length - 1];
+      
         set(() => ({
-            result: results[results.length - 1]?.result ?? null,
-            score: results[results.length - 1]?.humanized_score ?? null,
-            changes: results.reduce(
-                (acc: Array<string>, cur: HumanizerResultsState) => acc.concat(cur.changes ?? []),
-                [] as string[],
-            ),
-            isLoading: false
+          result: last?.result ?? null,
+          score: last?.humanized_score ?? null,
+          changes: results.reduce(
+            (acc: string[], cur: HumanizerResult) => acc.concat(cur.changes ?? []),
+            []
+          ),
+          isLoading: false
         }));
-    },
+      },
 
     updateLoading: (isLoading: boolean) => {
         set(() => ({

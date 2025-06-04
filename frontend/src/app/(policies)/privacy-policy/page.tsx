@@ -4,7 +4,7 @@ const PrivacyPolicy = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>Privacy Policy</h1>
-      <p className={styles.lol}>You won't read it, but anyway...</p>
+      <p className={styles.lol}>You won{"'"}t read it, but anyway...</p>
 
       <section className={styles.section}>
         <h2 className={styles.subheading}>1. Information We Collect</h2>
