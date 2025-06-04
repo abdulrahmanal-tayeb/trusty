@@ -31,7 +31,7 @@ class Trusty extends StatelessWidget {
       title: 'Trusty',
       theme: lightTheme,
       darkTheme: darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
 
       // locale: localeProvider.locale,

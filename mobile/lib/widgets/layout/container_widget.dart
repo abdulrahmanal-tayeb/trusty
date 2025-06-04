@@ -70,7 +70,7 @@ class _ContainerWidgetState extends State<ContainerWidget>
   @override
   Widget build(BuildContext context) {
     final bgColor =
-        widget.backgroundColor ?? const Color(0xFF1C1C2E); 
+        widget.backgroundColor ?? Color.fromARGB(15, 170, 176, 255); 
     final bdColor =
         widget.borderColor ?? Colors.white.withOpacity(0.1);
 
@@ -99,7 +99,7 @@ class _ContainerWidgetState extends State<ContainerWidget>
               height: widget.skeletonHeight,
               padding: widget.padding,
               decoration: BoxDecoration(
-                color: bgColor.withOpacity(_fadeAnim.value),
+                color: bgColor?.withOpacity(_fadeAnim.value),
                 borderRadius: widget.borderRadius,
                 border: Border.all(color: bdColor),
               ),

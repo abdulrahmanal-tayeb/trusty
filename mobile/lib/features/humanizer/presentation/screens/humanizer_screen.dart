@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:trusty/features/humanizer/presentation/widgets/features/humanizer_screen/humanizer_input.dart';
 import 'package:trusty/features/humanizer/presentation/widgets/features/humanizer_screen/humanizer_options.dart';
@@ -35,6 +36,13 @@ class _HumanizerScreenState extends State<HumanizerScreen> {
             spacing: 20,
             children: [
               const SizedBox(height: 30),
+              SvgPicture.asset(
+                'assets/logos/logo.svg',
+                height: 50,
+                width: 50,
+                semanticsLabel: 'Logo',
+              ),
+              const SizedBox(height: 10),
               HumanizerInput(
                 onScrollClicked: _scrollToOptions,
                 onChange: (value) {

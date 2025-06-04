@@ -16,19 +16,16 @@ class DropDownWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const bgColor = Color(0xFF2A2A3C);
     return DropdownButtonFormField<String>(
       value: value,
       onChanged: onChanged,
       isExpanded: true,                 // ← allow full width
-      dropdownColor: bgColor,
       iconEnabledColor: Colors.white,   // dropdown arrow color
       style: const TextStyle(color: Colors.white), // item text
       decoration: InputDecoration(
         labelText: label,
         labelStyle: const TextStyle(color: Colors.white54),
         filled: true,
-        fillColor: bgColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
         ),
