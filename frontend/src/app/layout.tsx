@@ -26,8 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-        <Footer/>
+        <div style={{padding: '1em'}}>
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );

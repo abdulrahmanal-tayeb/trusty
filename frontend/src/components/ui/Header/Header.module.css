@@ -21,6 +21,10 @@
 }
 
 
+.logo {
+    width: clamp(100px, 81vw, 350px);
+}
+
 @media (max-width: 350px){
     .subtitle {
         font-size: 0.9em;

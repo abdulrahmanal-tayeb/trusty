@@ -644,9 +644,7 @@ body::before {
 
 
 @media (max-width: 510px) {
-  body {
-    padding: 1rem;
-  }
+
   .content {
     padding: 0;
   }
