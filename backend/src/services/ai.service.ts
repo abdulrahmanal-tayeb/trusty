@@ -2,10 +2,11 @@ import { openai } from "../ai-providers/openai-provider";
 import { AIResponse, PhaseFunc, PhaseOutput } from "../models/ai.model";
 import { PHASES_TEMPLATES } from "../config/constants";
 import { HumanizerOptions } from "../models/options.model";
+import { deepseek } from "../ai-providers/deepseek-provider";
 
 export const firstPhase = async (text: string, system: string): Promise<AIResponse> => {
-    return openai.send({
-        model: "gpt-4o",
+    return deepseek.send({
+        model: "deepseek-chat",
         system,
         prompt: `Humanize this text:\n \`\`\`${text}\`\`\``,
     });
@@ -59,7 +60,7 @@ const buildSystemInstruction = (systemInstruction: string, options: HumanizerOpt
 console.log("OPTIONS ARE: ", options);
 return options? `
 # IMPORTANT:
-${(options.language && options.language !== "auto")? `- Return the results in this language (${options.language})` : ""}.
+${(options.language && options.language !== "auto")? `- Return the results in this language (${options.language}), make sure the translation is native not just literally` : ""}.
 ${(options.tone && `- Use a (${options.tone}) tone in all parts of the result`)}
 ${(options.resultType && `- The result type should be:  (${options.resultType})`)}
 ${systemInstruction}
