@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:trusty/providers/user_input_provider.dart';
 import 'package:trusty/widgets/inputs/drop_down_widget.dart';
 import 'package:trusty/widgets/layout/container_widget.dart';
 
@@ -17,9 +19,9 @@ class _HumanizerOptionsState extends State<HumanizerOptions> {
   final List<String> languages = ['English', 'Arabic', 'French', 'Spanish'];
   final List<String> tones = ['Professional', 'Friendly', 'Neutral', 'Empathetic'];
   final List<String> resultTypes = ['Summarized', 'Detailed', 'Rewritten'];
-
   @override
   Widget build(BuildContext context) {
+    final UserInputProvider provider = context.read<UserInputProvider>();
     return ContainerWidget(
       label: "Customize Result",
       child: Column(
@@ -33,7 +35,7 @@ class _HumanizerOptionsState extends State<HumanizerOptions> {
                   label: "Select Language",
                   value: _selectedLanguage,
                   items: languages,
-                  onChanged: (v) => setState(() => _selectedLanguage = v!),
+                  onChanged: (v) => setState(() => provider.language = v!),
                 ),
               ),
               const SizedBox(width: 16),
@@ -42,7 +44,7 @@ class _HumanizerOptionsState extends State<HumanizerOptions> {
                   label: "Select Tone",
                   value: _selectedTone,
                   items: tones,
-                  onChanged: (v) => setState(() => _selectedTone = v!),
+                  onChanged: (v) => setState(() => provider.tone = v!),
                 ),
               ),
             ],
@@ -58,7 +60,7 @@ class _HumanizerOptionsState extends State<HumanizerOptions> {
                   label: "Result Type",
                   value: _selectedResultType,
                   items: resultTypes,
-                  onChanged: (v) => setState(() => _selectedResultType = v!),
+                  onChanged: (v) => setState(() => provider.resultType = v!),
                 ),
               ),
             ],
