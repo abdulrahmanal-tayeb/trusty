@@ -58,11 +58,10 @@ const PHASES: PhaseFunc[] = [
 const buildSystemInstruction = (systemInstruction: string, options: HumanizerOptions) : string => {
 console.log("OPTIONS ARE: ", options);
 return options? `
+# IMPORTANT:
+${(options.language && options.language !== "auto")? `- Return the results in this language (${options.language})` : ""}.
+${(options.tone && `- Use a (${options.tone}) tone in all parts of the result`)}
+${(options.resultType && `- The result type should be:  (${options.resultType})`)}
 ${systemInstruction}
-
-# Notes:
-${(options.language && options.language !== "en")? `- Return the results in **${options.language}**` : ""}.
-${(options.tone && `- Use a ${options.tone} tone`)}
-${(options.resultType && `- Make sure to return a ${options.resultType}`)}
 `: systemInstruction;
 }
