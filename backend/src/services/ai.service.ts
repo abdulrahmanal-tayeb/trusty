@@ -19,8 +19,6 @@ export const secondPhase = async (text: string, system: string): Promise<AIRespo
     });
 }
 
-
-
 export const processText = async (userText: string, options: HumanizerOptions): Promise<PhaseOutput[]> => {
     if (!userText) return [];
 
